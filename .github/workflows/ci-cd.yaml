@@ -1,0 +1,42 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify frontend files
+        run: |
+          test -f index.html
+          test -f styles.css
+          test -f script.js
+          test -f Dockerfile
+
+      - name: Build Docker image
+        run: docker build -t frontend-practice1:latest .
+
+      - name: Run container
+        run: |
+          docker run -d \
+            --name frontend-test \
+            -p 8080:80 \
+            frontend-practice1:latest
+
+      - name: Test website
+        run: |
+          for i in $(seq 1 10); do
+            if curl -fsS http://localhost:8080/ -o /tmp/index.html; then
+              break
+            fi
+            sleep 2
+          done
+          grep -q "Deployment Dashboard" /tmp/index.html
