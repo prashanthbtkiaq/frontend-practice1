@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend DevOps Lab</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <p class="eyebrow">MY FIRST DEVOPS PROJECT</p>
+        <h1>Frontend DevOps Lab</h1>
+        <p>Build. Test. Package. Deploy.</p>
+    </header>
+
+    <main>
+        <section class="panel">
+            <h2>Deployment Dashboard</h2>
+            <p>Use this project to practise a real frontend delivery workflow.</p>
+
+            <div class="status-list">
+                <div class="status-item">
+                    <span>Source control</span>
+                    <strong>GitHub</strong>
+                </div>
+                <div class="status-item">
+                    <span>Web server</span>
+                    <strong>Nginx</strong>
+                </div>
+                <div class="status-item">
+                    <span>Container</span>
+                    <strong>Docker</strong>
+                </div>
+                <div class="status-item">
+                    <span>UI check</span>
+                    <strong id="ui-status">Not run</strong>
+                </div>
+            </div>
+
+            <button id="run-check">Run frontend check</button>
+            <p id="last-checked">No check performed yet.</p>
+        </section>
+    </main>
+
+    <footer>Frontend DevOps Lab | Learning project</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
